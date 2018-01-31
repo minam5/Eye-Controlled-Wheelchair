@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "in run_wheelchair" >> /home/pi/chairlog.txt
+cd /home/pi
+source /home/pi/.profile &>> /home/pi/chairlog.txt
+workon cv &>> /home/pi/chairlog.txt
+echo "running python" >> /home/pi/chairlog.txt
+sudo python /home/pi/rd4/eyedetector.py &>> /home/pi/chairlog.txt
+if [ $? -eq 0 ]
+    then echo "shutting down after safe exit from eyedetector.py" >> /home/pi/chairlog.txt
+    sudo shutdown -h now
+fi
+echo "exit from run_wheelchair" >> /home/pi/chairlog.txt
+exit 0

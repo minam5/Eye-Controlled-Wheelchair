@@ -1,0 +1,5 @@
+helpful things
+
+installing opencv through anaconda (must also install numpy from conda-forge in the same way: https://stackoverflow.com/questions/41873941/cant-install-opencv3-on-anaconda3-python3-6-on-macos
+
+how I figured out numpy needed to also be installed like that: https://github.com/conda-forge/numpy-feedstock/issues/47

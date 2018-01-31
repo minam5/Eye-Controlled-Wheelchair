@@ -1,0 +1,28 @@
+#! /bin/sh
+# /etc/init.d/chaircontrol
+
+### BEGIN INIT INFO
+# Provides:		chaircontrol
+# Required-Start:	$all
+# Required-Stop:	$local_fs $time $syslog
+# Default-Start:	3 5
+# Default-Stop:		0 1 2 4 6
+# Short-Description:	Start chaircontrol service
+# Description:		Enable chaircontrol to start at boot and stop at shutdown
+### END INIT INFO
+case "$1" in
+	start)
+		mv /home/pi/chairlog.txt /home/pi/prevchairlog.txt
+		echo "starting chaircontrol" >> /home/pi/chairlog.txt
+		bash /home/pi/rd4/run_wheelchair &
+		;;
+	stop)
+		echo "stopping chaircontrol" >> /home/pi/chairlog.txt
+		killall python
+		;;
+	*)
+		echo "unexpected input: $1" >> /home/pi/chairlog.txt
+		;;
+esac
+
+exit 0
